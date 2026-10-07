@@ -1,35 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>AI Resume Reader</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
 
-    <h1>AI Resume Reader</h1>
+    <div class="container">
 
-    <form method="POST">
+        <h1>AI Resume Reader</h1>
 
-        <textarea
-            name="resume"
-            rows="15"
-            cols="80"
-            placeholder="Paste candidate resume here..."
-            required></textarea>
+        <p class="subtitle">
+            Upload or paste a candidate's resume to predict the job category
+        </p>
 
-        <br><br>
+        <form method="POST">
 
-        <button type="submit">
-            Analyze Resume
-        </button>
+            <textarea
+                id="resume"
+                name="resume"
+                placeholder="Paste candidate resume here..."
+                required>{{ request.form.get('resume', '') }}</textarea>
 
-    </form>
+            <div class="buttons">
 
-    {% if prediction %}
-        <h2>Predicted Job Category:</h2>
-        <h3>{{ prediction }}</h3>
-    {% endif %}
+                <!-- Analyze Button -->
+                <button type="submit" class="analyze-btn">
+                    Analyze Resume
+                </button>
+
+                <!-- Clear Button -->
+                <button type="button"
+                        class="clear-btn"
+                        onclick="clearForm()">
+                    Clear
+                </button>
+
+            </div>
+
+        </form>
+
+
+        {% if prediction %}
+
+        <div class="result" id="result">
+
+            <h2>Predicted Job Category</h2>
+
+            <p>{{ prediction }}</p>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <script>
+
+        function clearForm() {
+
+            // Clear resume text
+            document.getElementById("resume").value = "";
+
+            // Remove prediction result
+            const result = document.getElementById("result");
+
+            if (result) {
+                result.remove();
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>
