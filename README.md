@@ -10,7 +10,7 @@ LinearSVC. The trained Pipeline is saved using Pickle and integrated
 with a Flask web application.
 
 
-##Technologies Used
+## Technologies Used
 - Python
 - Natural Language Processing (NLP)
 - Scikit-learn
@@ -28,12 +28,16 @@ Candidate Resume → NLP Processing → TF-IDF → LinearSVC → Predicted Job
 Category
 The TF-IDF vectorizer and LinearSVC classifier are combined into a
 single Machine Learning Pipeline.
-Dataset
+
+
+## Dataset
 The project uses a resume classification dataset containing:
 - 962 resume records
 - 25 job categories
 - Resume text and corresponding category labels
-Some of the job categories include:
+
+
+## Some of the job categories include:
 - Python Developer
 - Java Developer
 - Data Science
@@ -53,7 +57,9 @@ Some of the job categories include:
 - SAP Developer
 - Automation Testing
 - Network Security Engineer
-Machine Learning Model
+
+
+## Machine Learning Model
 The project uses a combination of:
 - TF-IDF Vectorization for converting resume text into numerical
   features
