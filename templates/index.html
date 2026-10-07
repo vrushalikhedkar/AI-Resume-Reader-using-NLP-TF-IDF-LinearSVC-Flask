@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Reader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+
+    <h1>AI Resume Reader</h1>
+
+    <form method="POST">
+
+        <textarea
+            name="resume"
+            rows="15"
+            cols="80"
+            placeholder="Paste candidate resume here..."
+            required></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
+
+    </form>
+
+    {% if prediction %}
+        <h2>Predicted Job Category:</h2>
+        <h3>{{ prediction }}</h3>
+    {% endif %}
+
+</body>
+</html>
